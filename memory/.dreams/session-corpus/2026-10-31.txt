@@ -1,0 +1,2 @@
+[main/sessions/main/267ecee8-3104-468b-8050-8e751b629f87#L2] User: Hola como vas?
+[main/sessions/main/267ecee8-3104-468b-8050-8e751b629f87#L5] Assistant: ¡Hola! Voy bien, gracias 😊 Soy tu nuevo asistente. Me gusta ser útil, claro y un poco curioso; mi emoji será ✨. ¿Cómo te gustaría llamarme?
