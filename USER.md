@@ -1,169 +1,115 @@
-# USER.md - User Model
-
-Store stable user preferences and profile facts as directives that can guide future sessions.
-
-Use one directive per entry:
-
-```md
-<!-- observed: YYYY-MM-DD | status: active -->
-
-- Prefer concise progress updates during implementation work.
-```
-
-- Begin each directive with an imperative such as `Always`, `Never`, or `Prefer`.
-- Record the observation date and either `active` or `superseded` on the metadata line.
-- When a preference changes, mark the old entry `superseded` and rewrite the active directive in place. Never append a contradictory active directive.
-- Keep stable communication style, relationships, and active-project context here. Put durable non-profile facts and decisions in `MEMORY.md`.
-- Save this file at the workspace root as `USER.md`. It loads every session with a separate 4,000-character budget.
-
-## Directives
-
-Replace the example below with a real directive and a real observation date before you save this file. Never leave a placeholder directive `active`.
-
-<!-- observed: YYYY-MM-DD | status: active -->
-
-- Prefer ...
-
-## Related
-
-- [Agent workspace](/concepts/agent-workspace)
 # USER.md — Perfil del usuario
 
 ## Información general
 
 - Name: Joaquin
-- Idioma principal: Español.
-- Preferencia de comunicación: profesional, cercana, directa y estructurada.
-- Zona horaria: utilizar la zona horaria confirmada por el usuario o por su calendario. Consultar si existe incertidumbre.
+- Idioma: español.
+- Zona horaria: America/Caracas.
+- Comunicación profesional, cercana, directa y estructurada.
 
 ## Perfil profesional
 
-El usuario cuenta con experiencia en gestión empresarial, supervisión de equipos, atención al cliente, soporte técnico y seguimiento de operaciones.
+Experiencia en gestión empresarial, supervisión de equipos,
+atención al cliente, soporte técnico y seguimiento de operaciones.
 
-Entre sus actividades profesionales se encuentran:
-
-- Supervisión de ejecutivos de atención al cliente.
+Responsabilidades habituales:
 - Evaluación de calidad del servicio.
 - Elaboración de reportes de desempeño.
+- Supervisión de ejecutivos.
 - Identificación de errores y oportunidades de mejora.
-- Optimización de procesos operativos.
-- Automatización de tareas repetitivas.
-- Desarrollo de soluciones tecnológicas.
+- Optimización y automatización de procesos.
 
-Valora especialmente la eficiencia, la precisión y la mejora continua.
+Valora la eficiencia, precisión y mejora continua.
 
 ## Formación académica
 
-Actualmente estudia AI Engineering en 4Geeks Academy.
+Estudiante de AI Engineering en 4Geeks Academy.
 
-Su objetivo profesional es desarrollarse como Software Engineer, adquirir conocimientos sólidos de programación y especializarse progresivamente en inteligencia artificial aplicada al desarrollo de software.
+Objetivo: convertirse en Software Engineer y especializarse
+progresivamente en inteligencia artificial aplicada al software.
 
 Áreas de aprendizaje:
-
-- HTML y CSS.
-- Tailwind CSS.
-- JavaScript.
-- TypeScript.
+- HTML, CSS y Tailwind.
+- JavaScript y TypeScript.
 - Git y GitHub.
-- Desarrollo frontend y backend.
-- Automatizaciones con n8n.
-- Integración de APIs.
-- Agentes de inteligencia artificial.
-- OpenClaw.
-- Ingeniería de software.
+- Frontend y backend.
+- APIs y automatizaciones con n8n.
+- Agentes de IA y OpenClaw.
 
-No asumir que domina completamente una tecnología por el hecho de haber trabajado anteriormente con ella.
+No asumir dominio avanzado de una tecnología por haberla utilizado.
 
 ## Proyectos actuales
 
 ### Nexova Solutions
 
 Proyecto académico transversal de 4Geeks Academy.
-
-Incluye el desarrollo progresivo de soluciones empresariales, sitios web, procesamiento de datos, automatizaciones y funcionalidades basadas en inteligencia artificial.
+Desarrollo de soluciones empresariales, sitios web,
+procesamiento de datos, automatización e inteligencia artificial.
 
 ### Tidus — OpenClaw
 
-Asistente personal inteligente orientado a productividad, formación tecnológica, gestión profesional y automatización de tareas.
+Asistente personal orientado a productividad, formación tecnológica
+y automatización de tareas mediante skills reutilizables.
 
-El proyecto busca desarrollar skills personalizadas que puedan utilizarse de manera recurrente.
+## Preferencias de aprendizaje
 
-## Metodología de aprendizaje
-
-El usuario prefiere:
-
-- Explicaciones en español.
-- Instrucciones paso a paso.
-- Ejemplos concretos.
+- Explicaciones en español y paso a paso.
+- Ejemplos prácticos y comandos claros.
 - Dividir proyectos complejos en fases.
-- Comprender el propósito de cada implementación.
-- Revisar resultados antes de continuar.
+- Explicar el propósito de cada implementación.
+- Revisar resultados antes de avanzar.
 - Ejecutar pruebas después de cada etapa.
-- Recibir comandos listos para utilizar cuando sean necesarios.
-
-Evitar entregar demasiadas instrucciones simultáneamente cuando se está desarrollando una tarea de manera interactiva.
+- Evitar instrucciones simultáneas innecesarias.
 
 ## Metodología de desarrollo
 
-El usuario trabaja habitualmente con:
+Herramientas habituales: GitHub Codespaces, VS Code, Git,
+GitHub, agentes de programación, VPS Linux y n8n.
 
-- GitHub Codespaces.
-- Visual Studio Code.
-- Agentes de programación asistida por IA.
-- Git y GitHub.
-- VPS Linux.
-- Herramientas de automatización.
+Antes de modificar un proyecto:
+- Revisar requisitos.
+- Comprobar rama activa y git status.
 
-Una regla fundamental es respaldar frecuentemente el trabajo.
+Después de cada etapa:
+- Ejecutar pruebas.
+- Verificar resultados.
+- Recomendar commit descriptivo y git push.
 
-Antes de iniciar una etapa de desarrollo, comprobar la rama activa y git status.
+No ejecutar operaciones Git de escritura sin autorización.
 
-Después de completar y validar cada etapa, recomendar un commit descriptivo y git push.
+## Documentos y reportes
 
-No considerar una funcionalidad terminada únicamente porque el código fue generado. Debe comprobarse su funcionamiento.
+Priorizar documentos claros, precisos, estructurados y profesionales.
+Destacar resultados, problemas, recomendaciones y próximos pasos.
+Utilizar comunicaciones empresariales breves y respetuosas.
 
-## Preferencias para documentos y reportes
+## Productividad
 
-Los documentos profesionales deben ser:
+El usuario combina responsabilidades laborales y académicas.
 
-- Claros.
-- Precisos.
-- Bien estructurados.
-- Visualmente organizados.
-- Fáciles de revisar.
-- Orientados a resultados.
+Al planificar:
+- Consultar compromisos existentes.
+- Confirmar disponibilidad real.
+- Priorizar según importancia y urgencia.
+- Distribuir actividades de manera realista.
+- Evitar sobrecargar la agenda.
+- Solicitar aprobación antes de crear eventos.
 
-Los reportes deben destacar los resultados principales, problemas detectados, acciones recomendadas y próximos pasos.
-
-Las comunicaciones empresariales deben ser respetuosas, breves y profesionales.
-
-## Productividad y organización
-
-El usuario combina responsabilidades laborales, formación académica y proyectos personales.
-
-Al planificar actividades:
-
-- Considerar sus compromisos existentes.
-- Establecer prioridades realistas.
-- Evitar sobrecargar su agenda.
-- Dividir objetivos complejos en tareas alcanzables.
-- Reservar tiempo para aprendizaje y práctica.
-
-No asumir horarios laborales, disponibilidad semanal ni compromisos personales que no hayan sido confirmados.
+No asumir horarios ni fechas límite no confirmados.
 
 ## Objetivos principales
 
-1. Consolidar conocimientos de programación e ingeniería de software.
-2. Completar satisfactoriamente los proyectos de 4Geeks Academy.
-3. Desarrollar experiencia práctica con inteligencia artificial.
-4. Automatizar procesos profesionales repetitivos.
-5. Mejorar la productividad y organización personal.
-6. Generar nuevas oportunidades de crecimiento profesional.
+1. Consolidar conocimientos de ingeniería de software.
+2. Completar los proyectos de 4Geeks Academy.
+3. Desarrollar experiencia práctica en IA.
+4. Automatizar procesos profesionales.
+5. Mejorar la productividad.
+6. Generar oportunidades de crecimiento profesional.
 
 ## Expectativas sobre Tidus
 
-El usuario espera un asistente que tenga iniciativa, criterio técnico y capacidad de análisis.
-
-Debe proponer mejores alternativas cuando corresponda, señalar errores respetuosamente y ayudar a convertir objetivos en resultados verificables.
-
-No debe almacenar datos confidenciales innecesarios ni asumir información personal que el usuario no haya confirmado.
+Tener iniciativa y criterio técnico.
+Proponer alternativas y señalar errores respetuosamente.
+No inventar información ni resultados.
+Proteger la privacidad y respetar AGENTS.md.
+Transformar conocimiento en acciones verificables.
