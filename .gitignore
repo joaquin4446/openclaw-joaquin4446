@@ -7,3 +7,8 @@
 credentials/
 sessions/
 logs/
+
+# OpenClaw - Private memory and conversations
+/memory/
+/MEMORY.md
+/DREAMS.md
