@@ -590,3 +590,49 @@ por OpenClaw y validada técnicamente con datos reales.
 Con esta implementación se alcanza el objetivo
 de seis skills nativas de integración con BreatheCode.
 Las pruebas conversacionales siguen pendientes.
+
+---
+
+## Configuración final de seguridad — Secret Egress Proxy
+
+**Estado:** Habilitado y Gateway operativo.
+
+**Configuración verificada:**
+- secrets.egressProxy.enabled: true
+- Gateway: running
+- Connectivity check: ok
+- Bind: 127.0.0.1
+- Puerto: 18789
+- Versión: OpenClaw 2026.10.9
+
+**Credencial registrada previamente:**
+FOURGEEKS_STUDENT_TOKEN, tipo secret,
+con destino permitido breathecode.herokuapp.com.
+
+**Mecanismo previsto:**
+Los procesos ejecutados mediante el Gateway
+pueden recibir referencias opacas al secreto.
+El proxy realiza su sustitución en solicitudes
+HTTPS autorizadas.
+
+**Pruebas completadas:**
+- Configuración habilitada.
+- Reinicio del Gateway.
+- Servicio activo.
+- Conectividad local correcta.
+
+**Pruebas pendientes:**
+- Verificar la sustitución real de la credencial
+  durante una solicitud realizada desde un
+  proceso administrado por el Gateway.
+- Ejecutar las seis skills conversacionalmente
+  mediante Tidus y Telegram.
+
+**Motivo de la limitación:**
+El proveedor LiteLLM agotó su presupuesto.
+No se atribuyen pruebas al agente que no realizó.
+
+**Conclusión:**
+La infraestructura del proxy está habilitada.
+La integración automática de extremo a extremo
+todavía no está demostrada.

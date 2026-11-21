@@ -163,3 +163,18 @@ feature/4geeks-student-api-skills
 
 Este proyecto forma parte de la personalización
 del asistente OpenClaw Tidus.
+
+### Estado final del proxy de secretos
+
+Se habilitó secrets.egressProxy.enabled=true
+y se reinició correctamente el Gateway.
+
+La conectividad fue comprobada y el servicio
+continúa funcionando en 127.0.0.1:18789.
+
+Esto verifica la configuración de infraestructura,
+pero no constituye una prueba de ejecución
+conversacional ni de sustitución de credenciales.
+
+Estas pruebas continúan pendientes por la
+indisponibilidad del modelo de LiteLLM.
