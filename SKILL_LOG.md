@@ -212,3 +212,83 @@ ni el acceso automático al secreto protegido de OpenClaw.
 
 **Conclusión:** Skill implementada, reconocida por OpenClaw
 y validada técnicamente con datos reales de BreatheCode.
+
+---
+
+## Validación técnica — Skill 3: 4geeks-pending-work
+
+**Nombre:** `4geeks-pending-work`
+
+**Estado:** Implementada y validada mediante terminal.
+Prueba conversacional pendiente por límite de LiteLLM.
+
+**Necesidad:** Identificar las actividades pendientes y
+rechazadas para saber qué trabajos requieren atención.
+
+**Solicitud que motivó la skill:**
+Permitir que Tidus responda preguntas como:
+"¿Qué me falta por entregar en 4Geeks?"
+o "¿Tengo actividades rechazadas?"
+
+**Endpoint:**
+GET /v1/assignment/user/me/task
+
+**Filtros utilizados:**
+- task_status=PENDING
+- task_status=REJECTED
+- limit=50
+- offset para paginación
+
+**Input:** Token de estudiante introducido mediante
+entrada oculta durante la prueba. El acceso automático
+al secreto de OpenClaw sigue pendiente de validación.
+
+**Output:** JSON con cantidades de tareas pendientes,
+rechazadas, distribución por tipo y, opcionalmente,
+los detalles individuales de las actividades.
+
+**Archivos:**
+- skills/4geeks-pending-work/SKILL.md
+- skills/4geeks-pending-work/scripts/list_pending.py
+
+**Decisiones de diseño:**
+- Consultar por separado PENDING y REJECTED.
+- Recuperar todas las páginas disponibles.
+- Verificar identificadores duplicados.
+- No considerar DONE como equivalente a APPROVED.
+- No presentar resultados parciales como completos.
+
+**Prueba ejecutada:**
+python3 -B skills/4geeks-pending-work/scripts/list_pending.py --summary
+
+**Resultados reales:**
+- ok: true
+- Pendientes: 9.
+- Rechazadas: 0.
+- Ejercicios pendientes: 8.
+- Proyectos pendientes: 1.
+- Total que requiere atención: 9.
+
+**Reconocimiento por OpenClaw:**
+- openclaw skills info 4geeks-pending-work: Ready.
+- Skills totales: 64.
+- Skills elegibles: 29.
+- Visible para el modelo: sí.
+- Disponible como comando: sí.
+
+**Interpretación:** Los resultados corresponden a las
+tareas accesibles mediante este endpoint y sus filtros.
+No representan necesariamente todas las actividades
+del programa ni un porcentaje oficial de avance.
+
+**Limitaciones:**
+- Probada en modo resumen; la presentación detallada
+  de actividades aún no se ha probado por separado.
+- No se ha probado desde Telegram.
+- No se ha verificado el acceso automático al secreto
+  protegido de OpenClaw.
+- El modelo de LiteLLM continúa sin presupuesto.
+
+**Conclusión:** Skill implementada y reconocida por
+OpenClaw. Consulta real a BreatheCode validada
+correctamente en la modalidad de resumen.
