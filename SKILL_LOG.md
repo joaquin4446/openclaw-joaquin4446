@@ -41,13 +41,45 @@ conversacionales de OpenClaw.
 
 ### Skill 1 — Autenticación
 
-- Nombre: pendiente de definir
-- Prompt de diseño: pendiente
-- Responsabilidad: verificar la identidad y sesión del estudiante
-- Endpoint: pendiente de verificar
-- Prueba: pendiente
-- Resultado: pendiente
-- Estado: sin implementar
+**Nombre:** `4geeks-authenticate`
+
+**Estado:** Implementada y validada mediante terminal. Ejecución conversacional pendiente.
+
+**Necesidad:** Comprobar que el token de estudiante permite acceder a BreatheCode antes de consultar información académica.
+
+**Solicitud que originó la skill:** Enseñar a Tidus a conectarse de forma segura a mi cuenta de 4Geeks y comprobar que la autenticación funciona.
+
+**Método de construcción:** La conversación inicial con Tidus fue interrumpida por el límite de presupuesto de LiteLLM. Se continuó mediante desarrollo asistido externamente y pruebas reales desde la terminal, sin atribuirle a Tidus acciones que no ejecutó.
+
+**Endpoint:** `GET /v1/admissions/user/me`
+
+**Input:** Token de estudiante, introducido mediante entrada oculta en las pruebas manuales. También se registró `FOURGEEKS_STUDENT_TOKEN` en el gestor de secretos de OpenClaw. Su acceso automático desde la skill sigue pendiente de comprobación.
+
+**Output:** Resultado JSON breve con el estado de autenticación, código HTTP y cantidad de academias cuando esté disponible.
+
+**¿Por qué este input?** Porque la API requiere una credencial para identificar al estudiante. El usuario no debería tener que introducirla en cada conversación.
+
+**¿Por qué este output?** Porque permite comprobar fácilmente si existe acceso sin mostrar datos personales ni credenciales.
+
+**Archivos implementados:**
+- `skills/4geeks-authenticate/SKILL.md`
+- `skills/4geeks-authenticate/scripts/check_auth.py`
+
+**Prueba realizada:** Ejecución de `check_auth.py` desde el VPS y consulta real a BreatheCode.
+
+**Resultado obtenido:**
+- HTTP 200.
+- `ok: true`.
+- Autenticación exitosa.
+- `academias_reportadas: null`, porque la respuesta no contenía ese campo como una lista.
+
+**Problema encontrado:** OpenClaw inicialmente no reconocía la skill. Se corrigió el inicio del archivo `SKILL.md` y se repitió la comprobación.
+
+**Verificación final:** `openclaw skills check` mostró 62 skills instaladas, 27 disponibles y `4geeks-authenticate` reconocida.
+
+**Limitación:** No se ha probado la ejecución desde Telegram debido al presupuesto agotado del modelo de IA. Tampoco se ha verificado todavía la inyección automática del secreto protegido.
+
+**Conclusión:** La autenticación mediante la API y el reconocimiento nativo de la skill funcionan. La integración conversacional completa permanece pendiente.
 
 ### Skill 2 — Mis proyectos
 
