@@ -12,3 +12,6 @@ logs/
 /memory/
 /MEMORY.md
 /DREAMS.md
+
+__pycache__/
+*.py[cod]
