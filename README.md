@@ -301,3 +301,19 @@ Las dos skills implementadas permiten continuar ampliando las capacidades del ag
 
 **Año:** 2026
 
+
+
+---
+
+## Integración con 4Geeks Student API
+
+Se desarrollaron seis skills personalizadas para
+consultar información académica y recursos educativos
+mediante BreatheCode.
+
+- [Documentación del proyecto](docs/4geeks-student-api.md)
+- [Registro de diseño y pruebas](SKILL_LOG.md)
+
+Las seis skills están implementadas y reconocidas
+por OpenClaw. La ejecución conversacional sigue
+pendiente por la limitación del proveedor LiteLLM.
