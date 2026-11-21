@@ -375,3 +375,95 @@ DONE tampoco garantiza APPROVED.
 
 **Conclusión:** Skill implementada, reconocida
 por OpenClaw y validada con datos reales de BreatheCode.
+
+---
+
+## Validación técnica — Skill 5: 4geeks-upcoming-events
+
+**Nombre:** `4geeks-upcoming-events`
+
+**Estado:** Implementada y validada desde terminal.
+Prueba conversacional pendiente por límite de LiteLLM.
+
+**Necesidad:** Consultar eventos y talleres próximos
+publicados en la API de BreatheCode.
+
+**Solicitud que motivó la skill:**
+Permitir que Tidus responda preguntas como:
+"¿Qué eventos vienen en 4Geeks?"
+o "¿Hay próximos talleres disponibles?"
+
+**Endpoint:**
+GET /v1/events/all
+
+**Parámetros:**
+- upcoming=true
+- limit=50
+- academy opcional, si se conoce su ID
+
+**Input:** Token de estudiante introducido mediante
+entrada oculta durante las pruebas.
+
+La integración automática con el gestor de secretos
+de OpenClaw sigue pendiente de validación.
+
+**Output:** JSON con eventos recuperados,
+academias organizadoras, fechas y modalidades
+cuando los datos estén disponibles.
+
+**Archivos:**
+- skills/4geeks-upcoming-events/SKILL.md
+- skills/4geeks-upcoming-events/scripts/list_events.py
+
+**Primera prueba:**
+- HTTP 200.
+- Respuesta de tipo list.
+- Campos verificados: id, title, starting_at,
+  ending_at, event_type, academy, online_event,
+  status y url, entre otros.
+
+**Problema encontrado:**
+La implementación inicial intentó recorrer páginas
+utilizando limit y offset.
+
+La API devolvió identificadores repetidos.
+El script detectó correctamente esa inconsistencia
+y evitó presentar resultados incompletos como válidos.
+
+**Corrección realizada:**
+Se modificó la implementación para recuperar
+solamente una respuesta de hasta 50 eventos.
+
+No se afirma que el listado sea completo,
+porque la paginación no ha sido verificada.
+
+**Prueba final:**
+python3 -B skills/4geeks-upcoming-events/scripts/list_events.py --summary
+
+**Resultados reales:**
+- ok: true.
+- Eventos recuperados: 1.
+- Academia organizadora: 4Geeks.com.
+- Alcance: eventos_generales.
+- Total global: desconocido.
+- Paginación: no verificada.
+
+**Reconocimiento por OpenClaw:**
+- openclaw skills info 4geeks-upcoming-events: Ready.
+- Visible para el modelo: sí.
+- Disponible como comando: sí.
+
+**Limitaciones:**
+- No se ha identificado de forma confirmada
+  la academia asignada al estudiante.
+- No se ha demostrado que el evento corresponda
+  a una actividad de la cohorte del estudiante.
+- No se ha probado la salida detallada por separado.
+- No se ha probado la ejecución desde Telegram.
+- No se ha verificado el acceso automático al secreto.
+- LiteLLM continúa sin presupuesto disponible.
+
+**Conclusión:**
+Skill implementada, reconocida por OpenClaw
+y validada técnicamente en modo resumen.
+La consulta general funciona con alcance limitado.
