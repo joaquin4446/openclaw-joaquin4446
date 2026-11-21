@@ -292,3 +292,86 @@ del programa ni un porcentaje oficial de avance.
 **Conclusión:** Skill implementada y reconocida por
 OpenClaw. Consulta real a BreatheCode validada
 correctamente en la modalidad de resumen.
+
+---
+
+## Validación técnica — Skill 4: 4geeks-progress-summary
+
+**Nombre:** `4geeks-progress-summary`
+
+**Estado:** Implementada y validada mediante terminal.
+Prueba conversacional pendiente por límite de LiteLLM.
+
+**Necesidad:** Consultar un resumen de los estados
+de las tareas académicas del estudiante.
+
+**Solicitud que motivó la skill:**
+Permitir que Tidus responda preguntas como:
+"¿Cómo van mis entregas de 4Geeks?"
+o "¿Cuántas actividades tengo completadas?"
+
+**Endpoint utilizado:**
+GET /v1/assignment/user/me/task
+
+**Parámetros:**
+- limit=50
+- offset para paginación
+
+**Decisión de diseño:** Se utilizó el endpoint de tareas
+porque /v1/activity/me devolvió HTTP 403.
+
+El resultado describe los estados de tareas accesibles,
+no el porcentaje oficial de avance académico.
+
+**Input:** Token de estudiante introducido mediante
+entrada oculta durante la prueba.
+
+El acceso automático al secreto almacenado en OpenClaw
+todavía no ha sido verificado.
+
+**Output:** JSON con total de tareas, distribución
+por estado, distribución por tipo y desglose combinado.
+
+**Archivos implementados:**
+- skills/4geeks-progress-summary/SKILL.md
+- skills/4geeks-progress-summary/scripts/progress_summary.py
+
+**Prueba realizada:**
+python3 -B skills/4geeks-progress-summary/scripts/progress_summary.py
+
+**Resultados reales:**
+- ok: true.
+- Total de tareas: 110.
+- DONE: 101.
+- PENDING: 9.
+- Ejercicios: 86 (78 DONE, 8 PENDING).
+- Lecciones: 3 (3 DONE).
+- Proyectos: 21 (20 DONE, 1 PENDING).
+
+**Comprobación de consistencia:**
+- Total por estado: 101 + 9 = 110.
+- Total por tipo: 86 + 3 + 21 = 110.
+- Coincide con los 21 proyectos de la segunda skill.
+- Coincide con las 9 tareas pendientes de la tercera skill.
+
+**Reconocimiento por OpenClaw:**
+- openclaw skills info 4geeks-progress-summary: Ready.
+- Skills totales: 65.
+- Skills elegibles: 30.
+- Visible para el modelo: sí.
+- Disponible como comando: sí.
+
+**Interpretación:** El 91,8 % de las tareas
+consultadas figura como DONE. No representa
+el porcentaje oficial de avance del curso.
+DONE tampoco garantiza APPROVED.
+
+**Limitaciones:**
+- El endpoint oficial de actividad devolvió HTTP 403.
+- No se ha probado desde Telegram.
+- No se ha verificado la integración automática
+  con el gestor de secretos de OpenClaw.
+- LiteLLM sigue sin presupuesto disponible.
+
+**Conclusión:** Skill implementada, reconocida
+por OpenClaw y validada con datos reales de BreatheCode.
