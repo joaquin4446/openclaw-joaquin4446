@@ -467,3 +467,126 @@ python3 -B skills/4geeks-upcoming-events/scripts/list_events.py --summary
 Skill implementada, reconocida por OpenClaw
 y validada técnicamente en modo resumen.
 La consulta general funciona con alcance limitado.
+
+---
+
+## Investigación de la sexta skill — Certificados
+
+**Funcionalidad inicialmente propuesta:** Consultar
+certificados académicos del estudiante.
+
+**Endpoint probado:**
+GET /v1/certificate/
+
+**Resultado:** HTTP 403.
+
+**Interpretación:** El servidor rechazó esta consulta
+con la sesión actual. No se pudo verificar el listado
+de certificados.
+
+**Decisión:** No implementar una skill que afirme
+consultar certificados sin acceso funcional.
+
+**Alternativa propuesta:** 4geeks-learning-resources,
+utilizando el catálogo educativo de BreatheCode.
+
+**Estado:** Pendiente de verificar acceso a los
+endpoints del catálogo y completar su implementación.
+
+**Limitación:** No se ha determinado la causa exacta
+del HTTP 403 del endpoint de certificados.
+
+---
+
+## Validación técnica — Skill 6: 4geeks-learning-resources
+
+**Nombre:** `4geeks-learning-resources`
+
+**Estado:** Implementada y validada desde terminal.
+Prueba conversacional pendiente por límite de LiteLLM.
+
+**Necesidad:** Consultar el catálogo educativo de
+BreatheCode y buscar materiales para complementar
+los estudios del estudiante.
+
+**Solicitud que motivó la skill:**
+Permitir que Tidus responda preguntas como:
+"Busca ejercicios de Python"
+o "¿Qué recursos puedo utilizar para practicar?"
+
+**Endpoint utilizado:**
+GET /v1/registry/asset
+
+**Parámetros:**
+- asset_type=EXERCISE, LESSON o PROJECT
+- limit=50
+- offset para paginación
+
+**Input:**
+- Token de estudiante introducido mediante entrada oculta.
+- Tipo de recurso opcional.
+- Palabra clave opcional.
+
+El acceso automático al secreto almacenado en OpenClaw
+todavía no ha sido verificado.
+
+**Output:** JSON con el total de recursos recuperados,
+coincidencias, distribución por dificultad y una lista
+limitada de recursos.
+
+**Archivos implementados:**
+- skills/4geeks-learning-resources/SKILL.md
+- skills/4geeks-learning-resources/scripts/search_resources.py
+
+**Decisiones de diseño:**
+- Consultar un solo endpoint del catálogo.
+- Utilizar paginación mediante limit y offset.
+- Comprobar el total de registros y los duplicados.
+- Buscar localmente en títulos, slugs y tecnologías.
+- Mostrar un máximo de 15 recursos por respuesta.
+- Distinguir el catálogo general de las tareas del usuario.
+
+**Prueba 1:**
+python3 -B skills/4geeks-learning-resources/scripts/search_resources.py --summary
+
+**Resultado real:**
+- ok: true.
+- Recursos EXERCISE recuperados: 95.
+- BEGINNER: 29.
+- EASY: 46.
+- INTERMEDIATE: 12.
+- Sin dificultad indicada: 8.
+
+**Prueba 2:**
+python3 -B skills/4geeks-learning-resources/scripts/search_resources.py --keyword python
+
+**Resultado real:**
+- ok: true.
+- Coincidencias con Python: 21.
+- Recursos mostrados: 15.
+- Hay más coincidencias: sí.
+- BEGINNER: 5.
+- EASY: 14.
+- INTERMEDIATE: 2.
+
+**Reconocimiento por OpenClaw:**
+- openclaw skills info 4geeks-learning-resources: Ready.
+- Skills totales: 67.
+- Skills elegibles: 32.
+- Visible para el modelo: sí.
+- Disponible como comando: sí.
+
+**Limitaciones:**
+- La prueba completa corresponde al tipo EXERCISE.
+- No se han probado todavía las búsquedas completas
+  de LESSON y PROJECT mediante esta skill.
+- No se ha probado desde Telegram.
+- No se ha verificado el acceso automático al secreto.
+- LiteLLM continúa sin presupuesto.
+
+**Conclusión:** Sexta skill implementada, reconocida
+por OpenClaw y validada técnicamente con datos reales.
+
+Con esta implementación se alcanza el objetivo
+de seis skills nativas de integración con BreatheCode.
+Las pruebas conversacionales siguen pendientes.
