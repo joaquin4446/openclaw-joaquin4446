@@ -152,3 +152,63 @@ Las pruebas se documentarán con:
 
 - Presupuesto del modelo de OpenClaw agotado.
 - Pruebas conversacionales desde Telegram no disponibles.
+
+---
+
+## Validación técnica — Skill 2: 4geeks-projects
+
+**Nombre:** `4geeks-projects`
+
+**Estado:** Implementada y validada desde la terminal.
+Prueba conversacional pendiente por límite de LiteLLM.
+
+**Necesidad:** Consultar los proyectos académicos del estudiante
+y conocer sus estados sin acceder manualmente a la plataforma.
+
+**Endpoint:**
+GET /v1/assignment/user/me/task
+
+**Parámetros:** task_type=PROJECT, limit y offset.
+
+**Input:** Token de estudiante, proporcionado mediante entrada
+oculta durante la prueba. El script también admite una variable
+de entorno segura, cuya integración automática con el gestor
+de secretos de OpenClaw sigue pendiente de verificación.
+
+**Output:** JSON con total_proyectos, por_estado y,
+opcionalmente, los proyectos y sus estados individuales.
+
+**Archivos:**
+- skills/4geeks-projects/SKILL.md
+- skills/4geeks-projects/scripts/list_projects.py
+
+**Diseño:** Recuperación paginada, comprobación de registros
+duplicados, validación del total y agrupación por estado.
+
+**Prueba real ejecutada:**
+python3 -B skills/4geeks-projects/scripts/list_projects.py --summary
+
+**Resultados:**
+- Consulta completada correctamente.
+- Total de proyectos: 21.
+- DONE: 20.
+- PENDING: 1.
+- La cantidad coincide con el total previamente reportado
+  por BreatheCode.
+
+**Reconocimiento por OpenClaw:**
+- openclaw skills info 4geeks-projects: Ready.
+- Skills totales: 63.
+- Skills elegibles: 28.
+- Visible para el modelo: sí.
+- Disponible como comando: sí.
+
+**Interpretación:** DONE es el estado devuelto por la API.
+No se considera equivalente a APPROVED. La distribución
+tampoco representa el porcentaje oficial de avance del curso.
+
+**Limitaciones:** No se ha probado la ejecución desde Telegram
+ni el acceso automático al secreto protegido de OpenClaw.
+
+**Conclusión:** Skill implementada, reconocida por OpenClaw
+y validada técnicamente con datos reales de BreatheCode.
